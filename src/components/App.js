@@ -4,6 +4,7 @@ import SongContainer from './SongContainer';
 import SortBy from './SortBy';
 import NavBar from './NavBar';
 import { Route, Routes } from 'react-router-dom';
+import Chart from './Chart';
 
 const CLIENT_ID = '376ffc6966bf4d979b27e6838b19b7af'; // Your client id
 console.log(process.env.REACT_APP_CLIENT_SECRET);
@@ -124,7 +125,11 @@ function App() {
         <NavBar />
         <SortBy sort={sort} setSort={setSort} />
         <Routes>
-          <Route path="/" element={<p>Hola</p>} />
+          <Route path="/" element={
+            <>
+              <Chart items = {items}/>
+            </>
+          } />
           <Route
             path="Hip-Hop"
             element={
