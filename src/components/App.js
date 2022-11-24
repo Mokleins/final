@@ -1,42 +1,42 @@
 /* Importing the necessary libraries and components*/
-import React, { useState, useEffect } from 'react';
-import SongContainer from './SongContainer';
-import SortBy from './SortBy';
-import NavBar from './NavBar';
-import { Route, Routes } from 'react-router-dom';
-import Chart from './Chart';
+import React, { useState, useEffect } from "react";
+import SongContainer from "./SongContainer";
+import SortBy from "./SortBy";
+import NavBar from "./NavBar";
+import { Route, Routes } from "react-router-dom";
+import Chart from "./Chart";
 
-const CLIENT_ID = '376ffc6966bf4d979b27e6838b19b7af'; // Your client id
+const CLIENT_ID = "376ffc6966bf4d979b27e6838b19b7af"; // Your client id
 console.log(process.env.REACT_APP_CLIENT_SECRET);
 // const CLIENT_SECRET = 'e9ed44e1545b443fa49114f9c541d59e'; // Your secret
 
 function App() {
-  const [accessToken, setAccessToken] = useState('');
+  const [accessToken, setAccessToken] = useState("");
   const [items, setItems] = useState([]);
   const [popItems, setPopItems] = useState([]);
   const [latinItmes, setLatinItems] = useState([]);
   const [rockItems, setRockItems] = useState([]);
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState("");
 
-  const hiphop = 'Hip-hop';
-  const pop = 'Pop';
-  const latin = 'Latin Music';
-  const rock = 'Classic Rock';
+  const hiphop = "Hip-hop";
+  const pop = "Pop";
+  const latin = "Latin Music";
+  const rock = "Classic Rock";
 
   useEffect(() => {
     //API Access Token
     var authParameters = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body:
-        'grant_type=client_credentials&client_id=' +
+        "grant_type=client_credentials&client_id=" +
         CLIENT_ID +
-        '&client_secret=' +
+        "&client_secret=" +
         process.env.REACT_APP_CLIENT_SECRET,
     };
-    fetch('https://accounts.spotify.com/api/token', authParameters)
+    fetch("https://accounts.spotify.com/api/token", authParameters)
       .then((result) => result.json())
       .then((data) => setAccessToken(data.access_token));
   }, []);
@@ -44,14 +44,14 @@ function App() {
   /**Fetching the data from hip-hop music 100 songs*/
   useEffect(() => {
     var parameters = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + accessToken,
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
       },
     };
     fetch(
-      'https://api.spotify.com/v1/playlists/37i9dQZF1DX1YPTAhwehsC/tracks?limit=100&additional_types=track&fields=items',
+      "https://api.spotify.com/v1/playlists/37i9dQZF1DX1YPTAhwehsC/tracks?limit=100&additional_types=track&fields=items",
       parameters
     )
       .then((response) => response.json())
@@ -61,14 +61,14 @@ function App() {
   /**Fetching the data from Pop music 100 songs*/
   useEffect(() => {
     var parameters = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + accessToken,
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
       },
     };
     fetch(
-      'https://api.spotify.com/v1/playlists/5sTHqyG2DAwmTCopHXHRdz/tracks?limit=100&additional_types=track&fields=items',
+      "https://api.spotify.com/v1/playlists/5sTHqyG2DAwmTCopHXHRdz/tracks?limit=100&additional_types=track&fields=items",
       parameters
     )
       .then((response) => response.json())
@@ -78,14 +78,14 @@ function App() {
   /**Fetching the data from Latin music 100 songs*/
   useEffect(() => {
     var parameters = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + accessToken,
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
       },
     };
     fetch(
-      'https://api.spotify.com/v1/playlists/37i9dQZF1DXbLMw3ry7d7k/tracks?limit=100&additional_types=track&fields=items',
+      "https://api.spotify.com/v1/playlists/37i9dQZF1DXbLMw3ry7d7k/tracks?limit=100&additional_types=track&fields=items",
       parameters
     )
       .then((response) => response.json())
@@ -95,14 +95,14 @@ function App() {
   /**Fetching the data from Classic Rock music 100 songs*/
   useEffect(() => {
     var parameters = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + accessToken,
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
       },
     };
     fetch(
-      'https://api.spotify.com/v1/playlists/6TeyryiZ2UEf3CbLXyztFA/tracks?limit=100&additional_types=track&fields=items',
+      "https://api.spotify.com/v1/playlists/6TeyryiZ2UEf3CbLXyztFA/tracks?limit=100&additional_types=track&fields=items",
       parameters
     )
       .then((response) => response.json())
@@ -111,11 +111,11 @@ function App() {
 
   function sortItems(items) {
     const sortedItems = items?.sort((item1, item2) => {
-      if (sort === 'Name') {
+      if (sort === "Name") {
         return item1.track.name.localeCompare(item2.track.name);
-      } else if (sort === 'Popularity Ascending') {
+      } else if (sort === "Popularity Ascending") {
         return item1.track.popularity - item2.track.popularity;
-      } else if (sort === 'Popularity Descending') {
+      } else if (sort === "Popularity Descending") {
         return item2.track.popularity - item1.track.popularity;
       } else {
         return item1, item2;
@@ -128,20 +128,24 @@ function App() {
     <div className="App">
       <header className="App-header">
         <NavBar />
-        <SortBy sort={sort} setSort={setSort} />
+        {/* <SortBy sort={sort} setSort={setSort} /> */}
         <Routes>
-          <Route path="/" element={
-            <>
-             <Chart items = {items} genre = {hiphop}/> 
-             <Chart items = {popItems} genre = {pop}/> 
-             <Chart items = {latinItmes} genre = {latin}/> 
-             <Chart items = {rockItems} genre = {rock}/> 
-            </>
-          } />
+          <Route
+            path="/"
+            element={
+              <div className="charts">
+                <Chart items={items} genre={hiphop} />
+                <Chart items={popItems} genre={pop} />
+                <Chart items={latinItmes} genre={latin} />
+                <Chart items={rockItems} genre={rock} />
+              </div>
+            }
+          />
           <Route
             path="Hip-Hop"
             element={
               <>
+                <SortBy sort={sort} setSort={setSort} />
                 <SongContainer items={sortItems(items)} />
               </>
             }
@@ -150,6 +154,7 @@ function App() {
             path="Pop"
             element={
               <>
+                <SortBy sort={sort} setSort={setSort} />
                 <SongContainer items={sortItems(popItems)} />
               </>
             }
@@ -158,6 +163,7 @@ function App() {
             path="Latin-Music"
             element={
               <>
+                <SortBy sort={sort} setSort={setSort} />
                 <SongContainer items={sortItems(latinItmes)} />
               </>
             }
@@ -166,6 +172,7 @@ function App() {
             path="Clasic-Rock"
             element={
               <>
+                <SortBy sort={sort} setSort={setSort} />
                 <SongContainer items={sortItems(rockItems)} />
               </>
             }
