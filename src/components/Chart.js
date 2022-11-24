@@ -3,7 +3,6 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 
 const PieChart = ({ items }) => {
-//   console.log(items);
   const first = items?.filter(function (item) {
     return item.track.popularity <= 20;
   }).length;
