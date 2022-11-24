@@ -127,7 +127,10 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <Chart items = {items}/>
+             <Chart items = {items}/> 
+             <Chart items = {popItems}/> 
+             <Chart items = {latinItmes}/> 
+             <Chart items = {rockItems}/> 
             </>
           } />
           <Route

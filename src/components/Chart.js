@@ -1,6 +1,7 @@
 // ./components/PieChart.js
 import React from "react";
 import { Pie } from "react-chartjs-2";
+import Chart from "chart.js/auto";
 
 const PieChart = ({ items }) => {
   const first = items?.filter(function (item) {
