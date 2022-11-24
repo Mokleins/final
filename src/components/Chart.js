@@ -3,7 +3,7 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
-const PieChart = ({ items }) => {
+const PieChart = ({ items , genre}) => {
   const first = items?.filter(function (item) {
     return item.track.popularity <= 20;
   }).length;
@@ -46,9 +46,9 @@ const PieChart = ({ items }) => {
   };
   return (
     <div style={{ width: 450, textAlign: "center" }}>
-        <h2>Hip-hop Popularity</h2>
+        <h2>{genre} Popularity</h2>
       <Pie data={data} width={50} height={50} />
-      <h4>The chart shows the amounts of hip-hop songs of different ranges of popularity</h4>
+      <h4>The chart shows the amounts of {genre} songs of different ranges of popularity</h4>
     </div>
   );
 };

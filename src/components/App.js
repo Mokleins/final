@@ -18,6 +18,11 @@ function App() {
   const [rockItems, setRockItems] = useState([]);
   const [sort, setSort] = useState('');
 
+  const hiphop = 'Hip-hop';
+  const pop = 'Pop';
+  const latin = 'Latin Music';
+  const rock = 'Classic Rock';
+
   useEffect(() => {
     //API Access Token
     var authParameters = {
@@ -127,10 +132,10 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-             <Chart items = {items}/> 
-             <Chart items = {popItems}/> 
-             <Chart items = {latinItmes}/> 
-             <Chart items = {rockItems}/> 
+             <Chart items = {items} genre = {hiphop}/> 
+             <Chart items = {popItems} genre = {pop}/> 
+             <Chart items = {latinItmes} genre = {latin}/> 
+             <Chart items = {rockItems} genre = {rock}/> 
             </>
           } />
           <Route
