@@ -20,7 +20,7 @@ function Song({item}) {
             <h2>{item.track.name}</h2>
             <h3>by {item.track.artists[0].name}</h3>
             <h4>popularity: {item.track.popularity}</h4>
-            <button onClick={() => setIsPlaying(!isPlaying)}>
+            <button onClick={() => setIsPlaying(!isPlaying)} className="playButton">
                 {!isPlaying ? 'Play' : 'Stop'}
             </button>
         </div>
