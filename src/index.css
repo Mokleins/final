@@ -71,7 +71,7 @@ code {
 .NavBar {
   display: flex;
   justify-content: space-around;
-  background-color: #333;
+  background-color: #3b3131;
   color: #fff;
   padding: 10px;
 }
