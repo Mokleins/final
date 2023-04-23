@@ -8,7 +8,6 @@ import Chart from "./Chart";
 
 const CLIENT_ID = "376ffc6966bf4d979b27e6838b19b7af"; // Your client id
 console.log(process.env.REACT_APP_CLIENT_SECRET);
-// const CLIENT_SECRET = 'e9ed44e1545b443fa49114f9c541d59e'; // Your secret
 
 function App() {
   const [accessToken, setAccessToken] = useState("");
@@ -51,7 +50,7 @@ function App() {
       },
     };
     fetch(
-      "https://api.spotify.com/v1/playlists/37i9dQZF1DX1YPTAhwehsC/tracks?limit=100&additional_types=track&fields=items",
+      "https://api.spotify.com/v1/playlists/37i9dQZF1DX0XUsuxWHRQd/tracks?limit=100&additional_types=track&fields=items",
       parameters
     )
       .then((response) => response.json())
